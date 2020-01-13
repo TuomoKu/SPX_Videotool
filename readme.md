@@ -1,6 +1,7 @@
-﻿﻿﻿﻿﻿﻿# SPX Videotool
+﻿﻿﻿﻿﻿﻿﻿# SPX Videotool
 
 is a scripted Windows utility for automated videofile conversions.
+(Available at https://bitbucket.org/TuomoKu/spx-videotool)
 
 The basic principle is that you create **Sourcefolders**, assign **Conversion Tasks** to them and the resulted new videofile(s) will be moved to **Target Folders**. This process repeats periodically.
 
