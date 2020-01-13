@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿# SPX Videotool
+﻿﻿﻿﻿﻿﻿﻿﻿# SPX Videotool
 
 is a scripted Windows utility for automated videofile conversions.
 (Available at https://bitbucket.org/TuomoKu/spx-videotool)
@@ -29,11 +29,12 @@ All of these are configured in **config.ini** -file.
 ---
 
 ## Installation and usage
-- Download required files (also available as a zip-file: https://drive.google.com/file/d/1PswRjMxGYkhnU-_qBHS4CwiqiAMPaFhr/view?usp=sharing ) and extract to a new folder, such as "C:/Videotool".
+- Download required files (a zip-file: https://bitbucket.org/TuomoKu/spx-videotool/downloads/SPX_VIDEOTOOL_13012020_1351.zip ) and extract to a new folder, such as "C:/Videotool".
 - Go to the folder and create a suitable sub-folder structure for tasks, see example below.
 - edit config.ini to match your folder structure and other needs.
 - Double click on SPX_VIDEOTOOL.hta and the UI opens up and starts working.
 - Logs are generated to _log_ -subfolder
+- Please let me know if you find this useful :)
 
 
 ## Example folder structure
