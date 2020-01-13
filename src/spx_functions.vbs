@@ -493,7 +493,7 @@ end sub
 sub ToolSelected(optionValue)
 	select case UCase(optionValue)
 		case "DOC"
-			call SPXRun("https://docs.google.com/document/d/15fh2IReVD0_G1NlwjyAqM3_AXvUijbV9V8IhVMmGEC4/edit?usp=sharing")
+			call SPXRun("https://bitbucket.org/TuomoKu/spx-videotool")
 		case "INI"
 			call SPXRun(SuffixBackslash(ROOTFOLDER) & "config.ini")
 		case "LOG"
