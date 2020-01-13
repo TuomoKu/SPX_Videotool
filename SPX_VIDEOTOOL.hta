@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+
+<!--
+
+	SPX Videotool
+	
+	VIDEOFOLDER SCANNER TOOL           (c) 2020 tuomo@smartpx.fi
+	------------------------------------------------------------
+	
+	+++++ NOTHING TO MODIFY HERE. SEE SRC/SPX_SCANNER.VBS ++++++
+	
+	This is a HTA based utility which will scan defined folders
+	and when a suitable sourcefile is found in it, it will convert
+	the file and will place output to a new subfolder(s).
+	
+	All the functionality is in the src folder script files, this
+	HTA file only works as a graphical user interface for script.
+	
+	------------------------------------------------------------
+	
+	                    -- MIT LICENSE --
+	      Copyright 2020 Tuomo Kulomaa <tuomo@smartpx.fi>
+
+	Permission is hereby granted, free of charge, to any person
+	obtaining a copy of this software and associated documentation
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
+	sell copies of the Software, and to permit persons to whom
+	the Software is furnished to do so, subject to the following
+	conditions:
+
+	The above copyright notice and this permission notice shall
+	be included in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+	KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+	WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+	PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+	OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+	OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+
+<HTML lang="en">
+<HEAD>
+	<!-- HTA SECTION ====================================================== -->
+	<HTA:APPLICATION
+		APPLICATIONNAME="HTA Name"
+		ID="SPXHTA"		
+		VERSION="1.0"
+		SINGLEINSTANCE="yes"
+		border="thick" 
+		borderStyle="static" 
+		caption="yes" 
+		maximizeButton="no" 
+		minimizeButton="yes" 
+		showInTaskbar="yes" 
+		windowState="normal"
+		innerBorder="yes"
+		navigable="yes"
+		scroll="no"
+		scrollFlat="yes"
+		icon="src/smartpx64.ico"
+	/> 
+
+	<title>SPX Videotool</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="src/spx_styles.css">
+</HEAD>
+
+
+	<script type="text/vbscript" src="src/spx_functions.vbs"></script>
+	<script LANGUAGE="VBScript">
+		' This area is for VBS code.
+	</script>
+	<script type="text/javascript">
+		// This area is for JAVASCRIPT code.
+		
+		
+		function TogglePause()
+			{
+				ONtext = "\u258E  \u258E" ;
+				OFFtext = "►";
+				btn = document.getElementById("stateButton");
+				curValue = btn.value;
+				if (curValue == ONtext) 
+					{
+						btn.value = OFFtext;
+					}
+				else
+					{
+						btn.value = ONtext;
+					}
+
+			}
+		
+		
+		function addToConsole(text,clearFirst)
+			{
+				el = document.getElementById("SPXconsole");
+				if (clearFirst)
+					{
+					el.innerHTML = text;
+					}
+				else
+					{
+					tx = el.innerHTML;
+					el.innerHTML = tx + '<br>' + text;
+					}
+			}
+		
+		
+		function js_hello(msg)
+			{
+				alert(msg);
+			}
+			
+			
+			
+		function SPX_Tools()
+			{
+			var e = document.getElementById("toolsDropdown");
+			var cmd = e.options[e.selectedIndex].value;
+			switch (cmd)
+				{
+				case "doc":
+					ToolSelected("doc");
+					break;
+				case "log":
+					ToolSelected("log");
+					break;
+				case "ini":
+					ToolSelected("ini");
+					break;
+				default:
+					//nothing;
+				}
+			e.selectedIndex = "0";
+			}
+			
+
+
+		function ChangeText(e,str)
+			{
+			document.getElementById(e).innerText = str;
+			}
+	</script>
+
+
+
+<BODY>
+<form id="spx" name="spx">
+	<TABLE BORDER="0" WIDTH="99%" style="height:200px;">
+		<TR  style="height:20px;">
+			<TD align="left" width="80%">
+				Running tasks in <b class="spxBLUE"><span id="timeleft">23</span></B> seconds...
+			</TD>
+			<TD align="right"  width="30%">
+				<input type="button" id="stateButton" style="width:55px;" class="spxBTN" value="&#9614;  &#9614;" onclick="TogglePause()" data-state="ON"><!-- &#9612; &#9612; -->
+				<select style="width:100px;display:none;" id="delay" class="spxSELECT">
+				  <option value="stop">Stop</option>
+				  <option value="5">5</option>
+				  <option value="10" selected>10</option>
+				  <option value="30">30</option>
+				  <option value="60">60</option>
+				</select>
+			</TD>
+		</TR>
+		<TR style="height:120px;">
+			<TD colspan="2">
+				<DIV id="SPXconsole" class="SPXconsole">
+					Howdy! Now, let's wait for the first execution cycle... <span class="spxERR">This is error</span>
+					<BR><BR><BR><BR><BR><BR><BR>
+				</DIV>
+			</TD>
+		</TR>
+		<TR>
+			<TD ALIGN="left">
+				<small>
+					<table cellpadding=2>
+						<TR><TD>Started</TD><TD><SPAN ID="started">09.07.1970 09:00</span></TD></TR>
+						<TR><TD>Completed</TD><TD><SPAN ID="completed" class="spxBLUE">0</span></TD></TR>
+						<TR><TD>Failed</TD><TD><SPAN ID="failed" class="spxBLUE">0</span></TD></TR>
+					</table>
+				</small>
+			</TD>
+			<TD ALIGN="center">
+				<select class="spxSELECT" style="width:100px; margin-bottom: 5px;" id="toolsDropdown" onchange="SPX_Tools()">
+				  <option value=""></option>
+				  <option disabled> </option>
+				  <option value="spx">Visit SmartPX.fi</option>
+				  <option disabled> </option>
+				   <option disabled>Commands</option>
+				  <option value="doc">&#9657; Documentation...</option>
+				  <option value="log">&#9657; Open log file...</option>
+				  <option value="ini">&#9657; Edit config.ini...</option>
+				</select>
+				<small><B>&copy; 2020 SmartPX</B></small><BR>
+				<small>13.01.2020 12:26</small><BR>			
+			</TD>
+		</TR>
+	</TABLE>
+</form>
+</body>
+</html>

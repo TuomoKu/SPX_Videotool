@@ -1,0 +1,73 @@
+
+body
+	{
+	background-color:		#232323;
+	font-family:			sans-serif;
+	font-size:				0.8em;
+	margin:					4px;
+	color:					#B9B9B9;
+	}
+		
+.spxERR
+	{
+	background-color:		#000;
+	color:					#F00;
+	}
+
+.spxBTN
+	{
+	background-color: #1D1D1D;
+	border: 1px solid #313131;
+	color: #2D8CEB;
+	padding: 3px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	letter-spacing: -1px;
+	}
+
+
+.spxBLUE
+	{
+	color:					#2D8CEB;
+	}
+
+
+.spxSELECT
+	{
+    display: block;
+    background-color: #1D1D1D;
+    color: #B9B9B9;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; 
+    box-sizing: border-box;
+    margin: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+	}
+
+
+
+.SPXform
+	{
+	width:					200px;
+	}
+			
+.SPXconsole
+	{
+	width:					95%;
+	height:					220px;
+	background-color:		#1D1D1D;
+	border:					2px solid #313131;
+	margin:					4px auto;
+	margin-top:				3px;
+	padding:				10px;
+	font-family:			"consolas";
+	color:					#909090;
+	font-size:				0.9em;
+	overflow-y: 			auto;
+	word-wrap: 				break-word;
+	}
