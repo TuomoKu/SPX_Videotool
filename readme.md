@@ -3,7 +3,7 @@
 is a scripted Windows utility for automated videofile conversions.
 (Repo imported to GitHub from https://bitbucket.org/TuomoKu/spx-videotool)
 
-The basic principle is that you create **Sourcefolders**, assign **Conversion Tasks** to them and the resulted new videofile(s) will be moved to **Target Folders**. This process repeats periodically.
+The basic principle is that you create **Sourcefolders**, assign **Conversion Tasks** to them and the resulted new videofile(s) will be created to **Target Folders**. This process repeats periodically.
 
 All of these are configured in **config.ini** -file.
 
@@ -15,11 +15,11 @@ All of these are configured in **config.ini** -file.
 
 
 ## Important concepts:
-- **converter**: an executable program which will do the processing part, such as *ffmpeg*.
+- **converter**: an executable program which will do the video processing part, such as *ffmpeg*.
 - **interval**: the delay time in seconds between folder scan processes.
 - **config.ini**: a file where all tasks and folders are configured.
 - **task** is the indivual conversion job and it's folders and other parameters. You can have unlimited, named tasks in the config file.
-- **source / target folder** Each task has a source folder which is observed for new "incoming video files" and the processed outcome will be saved to the tasks target folder.
+- **source / target folder** Each task has a source folder which is observed for new "incoming video files" and the processed outcome will be saved to the task's target folder.
 - **special variables** are built in variables for helping configuring tasks. Variables uses _double mustache_ format. The following variables are available
 >- **{{SOURCEFILE}}** a runtime evaluated full path to the source file (for example "c:/source/videofile.avi")
 >-  **{{TARGETFILE}}** a runtime evaluated path to the target file without extension ("c:/source/videofile")
@@ -29,9 +29,9 @@ All of these are configured in **config.ini** -file.
 ---
 
 ## Installation and usage
-- Download required files (a zip-file: https://bitbucket.org/TuomoKu/spx-videotool/downloads/SPX_VIDEOTOOL_13012020_1351.zip ) and extract to a new folder, such as "C:/Videotool".
-- Go to the folder and create a suitable sub-folder structure for tasks, see example below.
-- edit config.ini to match your folder structure and other needs.
+- Download files to a new folder, such as "C:/Videotool".
+- Go to the folder and create a suitable sub-folder structure for tasks. (Example below.)
+- Edit config.ini to match your folder structure and other needs.
 - Double click on SPX_VIDEOTOOL.hta and the UI opens up and starts working.
 - Logs are generated to _log_ -subfolder
 - Please let me know if you find this useful :)
@@ -90,7 +90,7 @@ Majority of the program logic is written in Visual Basic Script (vbs) language. 
 
 
 ### VIDEO CONVERTER
-The package comes with **ffmpeg** binary, which is a command line utility for video file processing (see http://https://www.ffmpeg.org/). Any other command line procesor can be used also, suck as Imagemagick. SPX Videotool creates command line arguments for the converter and starts the process. 
+The package comes with **ffmpeg** binary, which is a command line utility for video file processing (see http://https://www.ffmpeg.org/). Any other command line processor can be used also, such as Imagemagick. SPX Videotool creates command line arguments for the converter and starts the process. 
 The converter application can be configured separately for each task with _config.ini._
 
 ---
@@ -105,28 +105,5 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", **WITHOUT WARRANTY OF ANY KIND**, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
